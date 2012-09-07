@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: django-fusionbox-contact
+Version: 0.0.1
+Summary: Reusable Contact Form application for Django
+Home-page: https://github.com/fusionbox/django-fusionbox-contact
+Author: Fusionbox programmers
+Author-email: programmers@fusionbox.com
+License: BSD
+Description: 
+        Reusable Contact Form application for Django
+        
+Keywords: django contact
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Requires: django_fusionbox

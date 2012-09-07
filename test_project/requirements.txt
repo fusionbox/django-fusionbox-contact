@@ -1,0 +1,11 @@
+-e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
+-e git://github.com/fusionbox/django-fusionbox-contact.git#egg=django_fusionbox_contact
+Django==1.4.1
+South
+Werkzeug
+django-cachebuster
+django-compressor
+django-debug-toolbar
+django-extensions
+MySQL-python==1.2.3
+django-secure

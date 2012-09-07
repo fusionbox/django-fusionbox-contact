@@ -1,0 +1,13 @@
+---
+subject: A contact form submission has been revieved
+---
+
+Someone has submitted the contact form.
+
+- *Name:* {{ submission.name }}
+- *Email:* {{ submission.email }}
+- *Comment:* {{ submission.comment }}
+
+Use the following link to view this submission.
+
+[{{ host }}{{ submission.get_absolute_url }}]({{ host }}{{ submission.get_absolute_url }})

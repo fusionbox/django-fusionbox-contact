@@ -1,6 +1,6 @@
-# django-fusionbox
+# django-fusionbox-contact
 
-Useful tools for Django development.
+Reusable Contact Form application
 
 
 ## Contributing

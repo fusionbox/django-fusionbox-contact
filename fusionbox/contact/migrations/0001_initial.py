@@ -11,7 +11,7 @@ class Migration(SchemaMigration):
         # Adding model 'Submission'
         db.create_table('contact_submission', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('created_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 7, 0, 0))),
+            ('created_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 12, 0, 0))),
             ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=320)),
@@ -48,7 +48,7 @@ class Migration(SchemaMigration):
         'contact.submission': {
             'Meta': {'ordering': "('-created_at',)", 'object_name': 'Submission'},
             'comment': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'created_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 7, 0, 0)'}),
+            'created_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 12, 0, 0)'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '320'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),

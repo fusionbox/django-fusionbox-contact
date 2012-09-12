@@ -18,46 +18,24 @@ Settings
 
 The contact module has the following settings values which which may be used to customize its behavior
 
-``SITE_NAME``
-  Name displayed on the success page for succesfult contact form submissions.  Defaults to 'Us'.
-
 ``CONTACT_FORM_RECIPIENTS``
   Iterable of email addresses.  Each person in this list will be emailed for each contact form recipient.  If not present, the contact module will use the values present in the Recipients table.  (See the Recipients section)
+
+
+Models
+------
+The contact application provides the following models.
+
+.. automodule:: fusionbox.contact.models
+    :members: 
 
 Views
 -----
 
-The contact module provides the following views located in ``fusionbox.contact.views``
+The contact module provides the following class-based views located in ``fusionbox.contact.views``
 
-**index(request[, template, email_template, contact_form, extra_context])**
-  Renders the contact form
-
-  URL name: ``contact_index``
-
-  Optional arguments:
-  
-  *  ``template``: The path to the template to display the contact form.  Defaults to ``contact/index.html``
-  *  ``email_template``: The markdown template used to send contact form submissions.  Defaults to ``mail/contact_form_submission.md``
-  *  ``contact_form``: A form.  Defaults to ``fusionbox.contact.forms.ContactForm``
-  *  ``extra_context``: A dictionary of extra context used for the response context
-
-  All of these arguments may be passed in through your url conf::
-
-        (r'^contact-us/index/$', 'fusionbox.contact.views.index', {'template': 'contact/index.html'}),
-
-**success(request[, template, extra_context])**
-  Renders the contact form
-
-  URL name: ``contact_index``
-
-  Optional arguments:
-  
-  *  ``template``: The path to the template to display the success page for successful contact form submissions.  Defaults to ``myapp/success.html``
-  *  ``extra_context``: A dictionary of extra context used for the response context
-
-  Similarly, these arguments can be passed in through your url conf::
-
-        (r'^contact-us/success/$', 'fusionbox.contact.views.success', {'template': 'myapp/success.html'}),
+.. automodule:: fusionbox.contact.views
+    :members:
 
 
 URLS
@@ -68,46 +46,39 @@ You may include the urls for the contact module one of two ways.
   
     url(r'^contact-us/', include('fusionbox.contact.urls')),
 
-2. Manually include the urls for both the ``index`` and ``success`` views.  Often this is the best way to customize the contact form or add extra context variables::
+2. Manually include the urls for both the ``index`` and ``success`` views.  Often this is the best way to customize the contact form or add extra context variables.  The example below is equivilant to the include statement::
    
-       (r'^contact-us/index/$', 'fusionbox.contact.views.index', {'template': 'myapp/index.html'}),
-       (r'^contact-us/success/$', 'fusionbox.contact.views.success', {'template': 'myapp/success.html'}),
+       (r'^contact-us/$', 'fusionbox.contact.views.index', name='contact_index'),
+       (r'^contact-us/success/$', 'fusionbox.contact.views.success', name='contact_success'),
 
    
 
 Templates
 ---------
-The contact module requires three templates.
+The contact module requires you to create two templates.
 
 Primary Contact Form Template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Default Location: ``contact/index.html``
 
-This template is passed the context variable ``form``.
+This template is rendered with the context variable ``form``.
 
 Example::
 
-        <form method-"post" action-"{% url fusionbox.contact.views.index %}">
-                {% csrf_token %}
-                {{ form.non_field_errors }}
-                <label for-"name">Name:</label>
-                <p>{{ form.name.errors }}{{ form.name }}</p>
-                <label for-"email">Email:</label>
-                <p>{{ form.email.errors }}{{ form.email }}</p>
-                <label for-"comments">Comments:</label>
-                <p>{{ form.comment.errors }}{{ form.comment }}</p>
-                <p><input type-"submit" name-"" id-"" value-"SUBMIT" class-"fr"/></p>
+        <form method-"post">
+            {% csrf_token %}
+            {{ form }}
+            {% uncaptcha %}
+            <button type="submit">Submit</button>
         </form>
 
 Success Page Template
 ^^^^^^^^^^^^^^^^^^^^^
 Default Location: ``contact/success.html``
 
-Upon a successful contact form submission, the user is redirected to the success page.  The success template receives a context variable ``site_name`` which is populated from the settings file.  If this value is not present, this variable will default to 'Us'.
-
 Example::
 
-        <p>Thank you for contacting {{ site_name }}.  Someone will be in touch with you shortly!</p>
+        <p>Thank you for contacting Us.  Someone will be in touch with you shortly!</p>
 
 Email Template
 ^^^^^^^^^^^^^^
@@ -115,9 +86,28 @@ Default Location: ``mail/contact_form_submission.html``
 
 Successful contact form submissions will be emailed using the fusionbox ``send_markdown_email`` function to a list of recipients.  The contact module will first look for ``CONTACT_FORM_RECIPIENTS`` in the settings file, and if not will use the values from the Recipients table.
 
-Example::
+Default Template::
 
-        <p>Thank you for contacting {{ site_name }}.  Someone will be in touch with you shortly!</p>
+        ---
+        subject: Someone has filled out the contact form
+        ---
+
+        Someone has submitted the contact form.
+
+        - *Name:* {{ submission.name }}
+        - *Email:* {{ submission.email }}
+        - *Comment:* {{ submission.comment }}
+
+        Use the following link to view this submission.
+
+        [{{ host }}{{ submission.get_absolute_url }}]({{ host }}{{ submission.get_absolute_url }})
+
+Admin
+-----
+The contact app automatically registers the following admin classes for its models.
+
+.. automodule:: fusionbox.contact.admin
+    :members:
 
 Recipients
 ----------

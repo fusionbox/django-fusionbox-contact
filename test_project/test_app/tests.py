@@ -58,3 +58,10 @@ class ContactTest(unittest.TestCase):
                 self.assertTrue(recipient.email in message.to)
             else:
                 self.assertFalse(recipient.email in message.to)
+
+    def test_admin_url(self):
+        submission = Submission.objects.create(name='Test Name', email='test@test.com', comment="Test Comment")
+        self.assertEquals(
+                reverse('admin:contact_submission_change', args=(submission.id,)),
+                submission.get_absolute_url()
+                )

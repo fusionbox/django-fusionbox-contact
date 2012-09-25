@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 from fusionbox import behaviors
 
@@ -10,6 +11,12 @@ class Submission(behaviors.Timestampable):
 
     class Meta:
         ordering = ('-created_at',)
+
+    def get_absolute_url(self):
+        return reverse('admin:{0}_{1}_change'.format(
+            self._meta.app_label,
+            self._meta.module_name,
+            ), args=(self.id,))
 
 
 class Recipient(models.Model):

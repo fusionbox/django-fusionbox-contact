@@ -21,6 +21,11 @@ The contact module has the following settings values which which may be used to 
 ``CONTACT_FORM_RECIPIENTS``
   Iterable of email addresses.  Each person in this list will be emailed for each contact form recipient.  If not present, the contact module will use the values present in the Recipients table.  (See the Recipients section)
 
+``CONTACT_SUBMISSION_VERBOSE_NAME`` and ``CONTACT_SUBMISSION_VERBOSE_NAME_PLURAL``
+  Overide default ``verbose_name`` and ``verbose_name_plural`` meta settings on the ``Submission`` model.
+
+``CONTACT_RECIPIENT_VERBOSE_NAME`` and ``CONTACT_RECIPIENT_VERBOSE_NAME_PLURAL``
+  Overide default ``verbose_name`` and ``verbose_name_plural`` meta settings on the ``Recipient`` model.
 
 Models
 ------

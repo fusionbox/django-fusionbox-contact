@@ -32,7 +32,7 @@ class SubmissionCreate(CreateView):
             recipients = settings.CONTACT_FORM_RECIPIENTS
         except AttributeError:
             recipients = Recipient.objects.filter(is_active=True).values_list('email', flat=True)
-        env = {'submission': form.instance}
+        env = {'submission': form.save()}
         if recipients:
             send_markdown_mail(self.email_template, env, to=recipients)
         return super(SubmissionCreate, self).form_valid(form)

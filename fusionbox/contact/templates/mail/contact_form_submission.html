@@ -6,8 +6,8 @@ Someone has submitted the contact form.
 
 - *Name:* {{ submission.name }}
 - *Email:* {{ submission.email }}
-- *Comment:* {{ submission.comment }}
+- *Comment:* {{ submission.comment|linebreaks }}
 
 Use the following link to view this submission.
 
-[{{ host }}{{ submission.get_absolute_url }}]({{ host }}{{ submission.get_absolute_url }})
+[{{ submission_url }}]({{ submission_url }})

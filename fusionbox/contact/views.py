@@ -32,10 +32,21 @@ class SubmissionCreate(CreateView):
             recipients = settings.CONTACT_FORM_RECIPIENTS
         except AttributeError:
             recipients = Recipient.objects.filter(is_active=True).values_list('email', flat=True)
-        env = {'submission': form.save()}
+        submission = form.save()
+        env = {
+            'submission': submission,
+            'submission_url': self.get_view_on_site_url(submission),
+        }
         if recipients:
             send_markdown_mail(self.email_template, env, to=recipients)
         return super(SubmissionCreate, self).form_valid(form)
+
+    def get_view_on_site_url(self, submission):
+        """
+        Determines the ``submission_url`` parameter included in the email
+        template.
+        """
+        return self.request.build_absolute_uri(submission.get_absolute_url())
 
     def get_success_url(self):
         """

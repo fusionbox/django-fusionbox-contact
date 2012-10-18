@@ -6,8 +6,16 @@ Someone has submitted the contact form.
 
 - *Name:* {{ submission.name }}
 - *Email:* {{ submission.email }}
-- *Comment:* {{ submission.comment|linebreaks }}
+{% if submission.comment %}
+- *Comment:* 
 
+{% for line in submission.comment.splitlines %}
+    {{ line }}
+{% endfor %}
+{% endif %}
+
+{% if submission_url %}
 Use the following link to view this submission.
 
 [{{ submission_url }}]({{ submission_url }})
+{% endif %}

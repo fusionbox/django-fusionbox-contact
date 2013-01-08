@@ -8,7 +8,7 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 HOST_NAME = socket.gethostname()
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -39,7 +39,7 @@ TIME_ZONE = 'America/Denver'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 SITE_ID = 1
 

@@ -1,0 +1,73 @@
+# django-fusionbox-contact app
+# Copyright (C) 2013 Fusionbox, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Rocky Meza <rmeza@fusionbox.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-08 12:32-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: admin.py:41
+msgid "Comment"
+msgstr "Comentario"
+
+#: admin.py:60
+msgid ""
+"Use this form to add or change a recipient for contact form submissions."
+msgstr ""
+"Usa este formulario para añadir or cambiar los recipientes del formulario de "
+"contacto."
+
+#: models.py:14
+msgid "Contact"
+msgstr "Contacto"
+
+#: models.py:18 models.py:35
+msgid "name"
+msgstr ""
+
+#: models.py:19 models.py:36
+msgid "email"
+msgstr "correo electrónico"
+
+#: models.py:20
+msgid "comment"
+msgstr "comentario"
+
+#: models.py:24
+msgid "submission"
+msgstr "entrego"
+
+#: models.py:25
+msgid "submissions"
+msgstr "entregos"
+
+#: models.py:37
+msgid "is active"
+msgstr "activo"
+
+#: models.py:38
+msgid ""
+"Only recipients with this field checked will receive contact form "
+"submissions."
+msgstr ""
+"Solo los recipientes con este campo llenado recibirán entregos del "
+"formulario de contacto."
+
+#: models.py:44
+msgid "recipient"
+msgstr "recipiente"
+
+#: models.py:45
+msgid "recipients"
+msgstr "recipientes"

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 
 from fusionbox.contact.models import Submission, Recipient
 from fusionbox.admin import CsvAdmin
@@ -37,7 +38,7 @@ class SubmissionAdmin(admin.ModelAdmin, CsvAdmin):
         the list_display.
         """
         return submission.comment[:200]
-    list_comment.short_description = 'Comment'
+    list_comment.short_description = _('Comment')
 
     def has_add_permission(self, *args, **kwargs):
         """
@@ -56,7 +57,7 @@ class RecipientAdmin(admin.ModelAdmin):
     fieldsets = (
                 (None, {
                     'fields': ('name', 'email', 'is_active'),
-                    'description': u'Use this form to add or change a recipient for contact form submissions',
+                    'description': _(u'Use this form to add or change a recipient for contact form submissions.'),
                     }),
             )
 
